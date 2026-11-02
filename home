@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101113">
+  <meta name="description" content="BVARTS — Tecnologia, Formação e Soluções. Design, documentos, Excel e desenvolvimento web.">
+  <title>BVARTS — Tecnologia, Formação e Soluções</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --bg: #101113;
+      --panel: #17191c;
+      --panel-2: #1d2024;
+      --white: #f5f5f3;
+      --muted: #a2a5a8;
+      --orange: #ff9d0a;
+      --line: rgba(255,255,255,.11);
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--white);
+      font-family: "DM Sans", Arial, sans-serif; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    header {
+      position: relative; z-index: 5; border-bottom: 1px solid var(--line);
+      background: rgba(16,17,19,.96);
+    }
+    .topbar { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .identity { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .identity img { width: 58px; height: 58px; object-fit: contain; border-radius: 3px; }
+    .brand-name { font: 800 21px/1 "Manrope", sans-serif; letter-spacing: .11em; }
+    .brand-name span { color: var(--orange); }
+    .brand-tag { display: block; margin-top: 6px; color: #a9aaac; font-size: 9px; letter-spacing: .16em; }
+    nav { display: flex; align-items: center; gap: 29px; }
+    nav a { color: #c3c4c5; text-decoration: none; font-size: 13px; font-weight: 600; transition: color .2s; }
+    nav a:hover { color: var(--orange); }
+    .nav-cta { padding: 12px 17px; border: 1px solid var(--orange); color: var(--orange); border-radius: 3px; }
+    .menu-btn { display: none; background: none; color: var(--white); border: 1px solid var(--line); padding: 9px 12px; border-radius: 3px; font-size: 19px; }
+    .hero { min-height: 590px; display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 70px; padding-block: 80px; }
+    .eyebrow { color: var(--orange); text-transform: uppercase; font-size: 11px; font-weight: 700; letter-spacing: .2em; display: flex; align-items: center; gap: 12px; }
+    .eyebrow:before { content: ""; width: 28px; height: 2px; background: var(--orange); }
+    h1,h2,h3,p { margin-top: 0; }
+    h1 { margin: 23px 0 20px; max-width: 720px; font: 800 clamp(46px,6vw,76px)/1.04 "Manrope", sans-serif; letter-spacing: -.065em; }
+    h1 span { color: var(--orange); }
+    .hero-copy { max-width: 570px; color: #b4b6b8; font-size: 16px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 3px; text-decoration: none; font-size: 13px; font-weight: 700; transition: .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-orange { background: var(--orange); color: #151515; }
+    .btn-outline { border: 1px solid var(--line); color: var(--white); }
+    .hero-mark { display: flex; justify-content: center; align-items: center; }
+    .hero-mark img { width: min(100%, 350px); height: auto; object-fit: contain; }
+    .hero-bottom { display: flex; gap: 35px; margin-top: 47px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .metric strong { display: block; color: var(--white); font: 700 18px "Manrope", sans-serif; }
+    .metric span { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; }
+    section.content-section { padding: 92px 0; border-top: 1px solid var(--line); }
+    .section-head { max-width: 650px; margin-bottom: 38px; }
+    .section-head h2 { margin: 15px 0 12px; font: 800 clamp(30px,4vw,43px)/1.13 "Manrope", sans-serif; letter-spacing: -.045em; }
+    .section-head p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .service {
+      min-height: 205px; padding: 25px 24px; background: var(--panel);
+      border: 1px solid var(--line); border-radius: 4px;
+    }
+    .service-number { color: var(--orange); font: 700 12px "Manrope", sans-serif; letter-spacing: .1em; }
+    .service h3 { margin: 23px 0 10px; font: 700 18px "Manrope", sans-serif; }
+    .service p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .about-title { font: 800 clamp(30px,4vw,44px)/1.15 "Manrope",sans-serif; letter-spacing: -.05em; }
+    .about-text { color: #b3b5b7; font-size: 15px; line-height: 1.9; }
+    .about-text strong { color: var(--white); }
+    .contact-box {
+      display: grid; grid-template-columns: 1fr auto; gap: 35px; align-items: center;
+      padding: 38px; background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--orange);
+    }
+    .contact-box h2 { margin-bottom: 10px; font: 800 clamp(26px,3vw,36px)/1.15 "Manrope",sans-serif; }
+    .contact-box p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    footer { padding: 27px 0; border-top: 1px solid var(--line); }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-copy { color: #85898d; font-size: 11px; line-height: 1.7; }
+    .socials { display: flex; gap: 18px; }
+    .socials a { color: #c3c5c7; text-decoration: none; font-size: 12px; font-weight: 600; }
+    .socials a:hover { color: var(--orange); }
+    .whatsapp-float {
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      justify-items: center;
+      align-content: center;
+      text-align: center;
+      position: fixed; right: 30px; bottom: 30px; z-index: 10;
+      background: var(--orange); color: #fff; /*padding: 14px 18px;*/
+      border-radius: 100%; text-decoration: none; font-size: 50px; font-weight: 800;
+      box-shadow: 0 7px 24px rgba(0,0,0,.25);
+    }
+    @media(max-width:850px) {
+      .hero { grid-template-columns: 1fr .55fr; gap: 25px; }
+      .services { grid-template-columns: repeat(2,1fr); }
+      nav { gap: 17px; }
+      .about-grid { gap: 35px; }
+    }
+    @media(max-width:650px) {
+      .wrap { width: min(100% - 36px, var(--max)); }
+      .topbar { min-height: 74px; }
+      .identity img { width: 48px; height: 48px; }
+      .brand-name { font-size: 18px; }
+      .menu-btn { display: block; }
+      nav {
+        display: none; position: absolute; top: 73px; left: 0; right: 0;
+        padding: 20px 22px 24px; background: #15171a; border-bottom: 1px solid var(--line);
+        flex-direction: column; align-items: stretch; gap: 19px;
+      }
+      nav.open { display: flex; }
+      nav a { font-size: 14px; }
+      .nav-cta { text-align: center; }
+      .hero { min-height: auto; grid-template-columns: 1fr; padding-block: 67px 60px; gap: 30px; }
+      h1 { font-size: clamp(43px,12vw,62px); }
+      .hero-mark { justify-content: flex-start; }
+      .hero-mark img { width: 155px; }
+      .hero-bottom { gap: 22px; margin-top: 35px; }
+      section.content-section { padding: 67px 0; }
+      .services { grid-template-columns: 1fr; }
+      .service { min-height: auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 18px; }
+      .contact-box { grid-template-columns: 1fr; padding: 27px 22px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+      .whatsapp-float { right: 14px; bottom: 14px; }
+    }
+    .social-links {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.social-links i {
+    color: #ff9d0a;
+    font-size: 20px;
+    transition: .3s;
+}
+
+.social-links a:hover {
+    color: #ff9d0a;
+}
+
+.social-links a:hover i {
+    color: #ffffff;
+}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <a class="identity" href="#inicio" aria-label="BVARTS — página inicial">
+      <img src="assets/logo.png" alt="Símbolo da BVARTS">
+      <span><span class="brand-name">BV<span>ARTS</span></span><span class="brand-tag">TECNOLOGIA · FORMAÇÃO · SOLUÇÕES</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav id="mainNav" aria-label="Menu principal">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contactos" class="nav-cta">Falar com a BVARTS</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero" id="inicio">
+    <div>
+      <div class="eyebrow">Tecnologia · Criatividade · Soluções</div>
+      <h1>Ideias que ganham<br><span>forma digital.</span></h1>
+      <p class="hero-copy">
+        A BVARTS transforma necessidades em soluções práticas.
+        Desenvolvemos identidade visual, documentos profissionais,
+        ferramentas de gestão e experiências digitais para pessoas e negócios.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-orange" href="https://wa.me/244928669109" target="_blank" rel="noopener">Solicitar orçamento</a>
+        <a class="btn btn-outline" href="#servicos">Explorar serviços</a>
+      </div>
+      <div class="hero-bottom">
+        <div class="metric"><strong>Design</strong><span>Identidade e comunicação</span></div>
+        <div class="metric"><strong>Digital</strong><span>Web e ferramentas</span></div>
+        <div class="metric"><strong>Gestão</strong><span>Organização e controlo</span></div>
+      </div>
+    </div>
+    <div class="hero-mark"><img src="assets/bvarts-logo.png" alt="Logotipo BVARTS"></div>
+  </div>
+
+  <section class="content-section" id="servicos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">O que fazemos</div>
+        <h2>Soluções pensadas para fazer avançar.</h2>
+        <p>Serviços digitais e criativos para apresentar melhor a tua marca, organizar o teu trabalho e fortalecer a tua presença online.</p>
+      </div>
+      <div class="services">
+        <article class="service"><span class="service-number">01 / DESIGN</span><h3>Design gráfico</h3><p>Logótipos, identidade visual, flyers, cartazes, cartões de visita e artes para marcas.</p></article>
+        <article class="service"><span class="service-number">02 / DOCUMENTOS</span><h3>Documentos e apresentações</h3><p>Currículos, formatação de documentos, trabalhos académicos e apresentações profissionais.</p></article>
+        <article class="service"><span class="service-number">03 / EXCEL</span><h3>Excel e gestão</h3><p>Folhas de cálculo, controlo de vendas, despesas, stock, clientes e relatórios.</p></article>
+        <article class="service"><span class="service-number">04 / WEB</span><h3>Desenvolvimento web</h3><p>Sites institucionais, páginas de vendas, portfólios e formulários digitais.</p></article>
+        <article class="service"><span class="service-number">05 / NEGÓCIOS</span><h3>Soluções para negócios</h3><p>Menus e catálogos digitais, códigos QR e configuração de ferramentas digitais.</p></article>
+        <article class="service"><span class="service-number">06 / SUPORTE</span><h3>Hospedagem e suporte</h3><p>Publicação de sites, configuração de hospedagem e instalação de programas.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="sobre">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">Sobre a BVARTS</div>
+        <h2 class="about-title">Tecnologia com propósito. Design com identidade.</h2>
+      </div>
+      <div class="about-text">
+        <p><strong>BVARTS — Tecnologia, Formação e Soluções.</strong> É uma marca orientada para a criação de soluções digitais e visuais, com foco na clareza, funcionalidade e apresentação profissional.</p>
+        <p>Trabalhamos para tornar ideias mais organizadas, marcas mais consistentes e processos mais simples — desde uma peça gráfica até uma ferramenta digital.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="contactos">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <div class="eyebrow">Vamos conversar</div>
+          <h2>Tens um projecto em mente?</h2>
+          <p>Explica-nos o que precisas. Estamos disponíveis para conversar e preparar uma solução adequada ao teu projecto.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-orange" href="https://chat.whatsapp.com/DBM22pzFCZa4qrG5KJOWJZ?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener">Nossa Comunidade</a>
+          <a style="pointer-events: none; opacity: 0.5; cursor: not-allowed;" class="btn btn-outline" href="#" target="_blank" rel="noopener">Contacto alternativo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-copy"><strong style="color:#f5f5f3;letter-spacing:.12em;">BVARTS</strong><br>TECNOLOGIA · FORMAÇÃO · SOLUÇÕES<br></div>
+    <div class="socials" aria-label="Redes sociais">
+      <!-- Substituir os destinos abaixo pelos endereços oficiais da BVARTS. -->
+      <a href="https://www.facebook.com/profile.php?id=61591469322717" target="_blank" rel="noopener">
+        <i class="fa-brands fa-facebook-f"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener">
+        <i class="fa-brands fa-tiktok"></i>
+        <span>TikTok</span>
+      </a>
+    </div>
+    <div class="footer-copy">© <span id="year"></span> BVARTS. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/244928669109" target="_blank" rel="noopener" aria-label="Contactar a BVARTS pelo WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('mainNav');
+  menuBtn.addEventListener('click', () => {
+    const opened = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(opened));
+    menuBtn.textContent = opened ? '×' : '☰';
+  });
+  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.textContent = '☰';
+  }));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
